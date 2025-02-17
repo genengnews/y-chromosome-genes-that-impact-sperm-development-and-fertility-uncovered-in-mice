@@ -1,0 +1,22 @@
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!*********************!*\
+  !*** ./src/view.js ***!
+  \*********************/
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.scroll-button');
+  buttons.forEach(button => {
+    button.addEventListener('click', event => {
+      event.preventDefault();
+      const target = document.querySelector('#hubspotWebinar');
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+});
+/******/ })()
+;
+//# sourceMappingURL=view.js.map

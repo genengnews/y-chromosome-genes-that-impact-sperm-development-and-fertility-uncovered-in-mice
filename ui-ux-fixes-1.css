@@ -1,0 +1,65 @@
+/* Sometimes the javascript for the header for Newspaper doesn't load properly, causing css to be missing from sub-menu's and making them cut off menu items. This is a fallback in the case it doesn't load. */
+.menu-desktop-tablet-header-menu-container #menu-desktop-tablet-header-menu-1 .menu-item .sub-menu {
+    width: auto;
+}
+
+.menu-desktop-tablet-header-menu-container #menu-desktop-tablet-header-menu-1 .menu-item a {
+    padding-right: 31px;
+}
+
+/* Forces thumbnails to be uniform in height on https://www.genengnews.com/subject/amyotrophic-lateral-sclerosis/ */
+.td-ss-main-content .td-block-row .td_module_wrap .td-module-thumb img.entry-thumb {
+    object-fit: cover;
+    width: 100%;
+    height: 175px
+}
+
+/* Fixes post being offset under template 6 and 7, it was offset to the right by 33 pixels for some reason. */
+.single_template_6 .td-post-template-6.post.has-post-thumbnail {
+    padding-right: 0;
+}
+
+.single_template_7 .td-post-template-7.post.has-post-thumbnail {
+    padding-right: 0;
+}
+
+/* Centers Read Digitally in the side bar */
+
+#text-5.td_block_template_1.widget.text-5.widget_text .textwidget p {
+    text-align: center;
+}
+
+/* Nav Classes that are assigned through Javascript
+   I known it's bad but it's the only way to work around tag div
+*/
+
+.admin-bar .td-header-menu-wrap.td-affix {
+    position: static !important;
+}
+
+.td-header-style-10 .td-header-menu-wrap.td-header-gradient {
+    margin: 0 auto;
+    width: 100%;
+    z-index: 9999999;
+    transform: translate3d(0px, 0px, 0px) !important;
+    background-color: #f9f9f9 !important;
+    visibility: visible !important;
+}
+
+div.static-nav {
+    /* Needs important as the style that tag div assigns is !important as well */
+    position: static !important;
+}
+
+div.fixed-nav {
+    position: fixed !important;
+    top: 0;
+}
+
+div.nav-bg {
+    background-color: #fff !important;
+}
+
+#to_top_scrollup {
+    z-index: 99999;
+}
