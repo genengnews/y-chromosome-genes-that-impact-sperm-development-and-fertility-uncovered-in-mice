@@ -1,0 +1,14 @@
+.td-post-author-name, .td-post-date, .td-post-comments {
+    top: 0 !important;
+}
+span.intercedent {
+    margin: 0 !important;
+    position: relative;
+    left: -2px;
+}
+span.intercedent.final {
+    position: static;
+}
+header .td-post-author-name a {
+    margin: 0 !important;
+}

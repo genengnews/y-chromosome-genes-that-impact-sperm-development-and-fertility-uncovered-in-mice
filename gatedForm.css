@@ -1,0 +1,44 @@
+.hubspotModal .hs-form, .hubspotModal .submitted-message {
+    margin-top: 0;
+    border: none;
+}
+
+.gated-widget .gated-widget-headline, dialog .gated-title, dialog .gated-message, .gated-widget small, .gated-widget button {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.gated-widget button, .gated-button {
+    border-radius: 3px;
+    font-size: 1.6rem !important;
+    font-weight: 500;
+    line-height: 1.2;
+    transition: background-color 0.3s ease;
+}
+
+.gated-widget button:hover, .gated-button:hover {
+    text-decoration: none !important;
+    filter: brightness(0.9);
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.hubspotModal {
+    transition: opacity 0.5s ease, z-index 0s step-start;
+    overflow: hidden;
+}
+.hubspotModal.active {
+    opacity: 1;
+    z-index: 0;
+}
+
+/*#gatedModal .hs-richtext:nth-of-type(1) {*/
+/*    background-color: red;*/
+/*}*/
+
+@media (min-width: 1200px) {
+    #gatedModal .hs-form {
+        padding: 3rem 0;
+    }
+}

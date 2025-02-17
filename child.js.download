@@ -1,0 +1,52 @@
+/*  Main child theme js file */
+
+// search menu item
+
+jQuery(document).ready(function($){
+
+    var isMobile = function(){
+        var isMobil = window.matchMedia("only screen and (max-width: 760px)");
+        return isMobil.matches ? true : false
+    }
+
+    $('.search-button a').on('click', function(e){
+        e.preventDefault();
+        if(isMobile()){
+            $( 'body' ).addClass( 'td-search-opened' );
+
+            var search_input = jQuery('#td-header-search-mob');
+            setTimeout(function(){
+                search_input.focus();
+            }, 1300);
+
+            $('.td-drop-down-search').removeClass('td-drop-down-search-open');
+        } else {
+            console.log('desktop');
+            $('.td-drop-down-search').toggleClass('td-drop-down-search-open');
+        }
+    });
+
+    $(document).on('click','.ad-blck-btn',function (e) {
+        e.preventDefault();
+
+        $('.close-modal').trigger('click');
+    });
+
+    
+    // * More Articles box recalculate
+    if(tds_more_articles_on_post_pages_distance_from_top != null && ! isNaN(tds_more_articles_on_post_pages_distance_from_top) && tds_more_articles_on_post_pages_distance_from_top <= 100) {
+        
+        var _distance_defined = parseInt(tds_more_articles_on_post_pages_distance_from_top) / 100;
+     
+        td_more_articles_box.distance_from_top = Math.round( (jQuery(document).height() - jQuery(window).height()) * _distance_defined);
+    }  
+    
+    // * disable ajax search in header 
+    if(tdAjaxSearch.do_ajax_call != null ) {
+
+        tdAjaxSearch.do_ajax_call = function () {
+            return false;
+        }
+
+    }
+});

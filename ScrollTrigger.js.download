@@ -1,0 +1,42 @@
+class ScrollTrigger {
+    constructor({pageId, offset}) {
+        this.pageId = pageId;
+        this.offset = offset;
+        this.pageElement = document.getElementById(pageId);
+        if (!this.pageElement) {
+            throw new Error(`Element with ID "${pageId}" not found.`);
+        }
+        this.handleScroll = this.handleScroll.bind(this);
+        this.init();
+    }
+
+    init() {
+        // Fire immediately if the document is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            this.checkIfInView();
+            window.addEventListener('scroll', this.handleScroll);
+
+
+            // Listen for 'malgamReady' and fire handleScroll
+            document.addEventListener('malgamReady', this.handleScroll);
+        });
+    }
+
+    checkIfInView() {
+        const rect = this.pageElement.getBoundingClientRect();
+        if (rect.top >= -this.offset && rect.bottom <= window.innerHeight + this.offset) {
+            googletag.cmd.push(() => {
+                googletag.display(this.pageId); // Use an arrow function to preserve `this`
+            });
+            this.cleanup(); // Stop listening after trigger
+        }
+    }
+
+    handleScroll() {
+        this.checkIfInView();
+    }
+
+    cleanup() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+}

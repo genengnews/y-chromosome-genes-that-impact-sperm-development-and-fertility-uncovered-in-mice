@@ -1,0 +1,100 @@
+jQuery(document).ready(function ($) {
+
+            function check_is_webview() {
+                var userAgent = window.navigator.userAgent.toLowerCase(),
+                safari = /safari/.test( userAgent ),
+                ios = /iphone|ipod|ipad/.test( userAgent );
+            
+                if( ios ) {
+                    if ( safari ) {
+                        //browser
+                    } else if ( !safari ) {
+                        return true;
+                    };
+                } 
+                return false;
+            }
+    
+            // hook up the social buttons to the popup window
+            jQuery('.td-social-sharing-button').off('click').on('click',function(event){
+               
+                var $theLinkEl = jQuery(this);
+
+                var blockUid = '';
+
+                // for email just open the url like normal
+                if ($theLinkEl.hasClass('td-social-mail') || $theLinkEl.hasClass('td-social-share-text')) {
+                    return;
+                }
+             
+
+                event.preventDefault();
+                if ($theLinkEl.hasClass('td-social-expand-tabs')) {
+
+                    blockUid = $theLinkEl.data('block-uid');
+
+                    var $blockWrapEl = jQuery('#' + blockUid);
+
+                    var $iconEl = $theLinkEl.find('.td-social-expand-tabs-icon');
+
+
+                    if ($blockWrapEl.hasClass('td-social-show-all')) { // hide icons
+
+                        // move the plus sign back
+                        $theLinkEl.detach().appendTo($blockWrapEl.find('.td-social-sharing-hidden:first'));
+
+                        // hide icons and init a new pulldown
+                        var jquery_object_container = $blockWrapEl;
+                        var horizontal_jquery_obj = jquery_object_container.find('.td-post-sharing-visible:first');
+                        var pulldown_item_obj = new tdPullDown.item();
+                        pulldown_item_obj.blockUid = jquery_object_container.attr('id');
+                        pulldown_item_obj.horizontal_jquery_obj = horizontal_jquery_obj;
+                        pulldown_item_obj.vertical_jquery_obj = jquery_object_container.find('.td-social-sharing-hidden:first');
+                        pulldown_item_obj.horizontal_element_css_class = 'td-social-sharing-button-js';
+                        pulldown_item_obj.container_jquery_obj = horizontal_jquery_obj.parents('.td-post-sharing:first');
+                        tdPullDown.add_item(pulldown_item_obj);
+
+
+                        jQuery('#' + blockUid).removeClass('td-social-show-all');
+                        $iconEl.removeClass('td-icon-minus');
+                        $iconEl.addClass('td-icon-plus');
+
+                    } else {
+                        // show ALL icons
+                        tdPullDown.unloadItem(blockUid);
+                        jQuery('#' + blockUid).addClass('td-social-show-all');
+                        $iconEl.removeClass('td-icon-plus');
+                        $iconEl.addClass('td-icon-minus');
+
+                        // move the minus button in the vertical list
+                        $theLinkEl.detach().appendTo($blockWrapEl.find('.td-post-sharing-visible:first'));
+                    }
+
+                    return;
+                }
+
+
+                // if ($theLinkEl.hasClass('td-social-twitter')) {
+                //     return;
+                // }
+
+                if ($theLinkEl.hasClass('td-social-print')) {
+                    window.print();
+                    return;
+                }
+
+
+                if(check_is_webview()) {
+                    window.location.assign($theLinkEl.attr('href'));
+                }
+                else {
+                    event.preventDefault();
+                    var left  = (jQuery(window).width()/2)-(900/2);
+                    var top   = (jQuery(window).height()/2)-(600/2);
+                    window.open($theLinkEl.attr('href'), 'mywin','left=' + left + ',top=' + top + ',width=900,height=600,toolbar=0');
+                }
+              
+            });
+
+
+});

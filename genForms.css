@@ -1,0 +1,52 @@
+.hs-form {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 16px;
+    border: solid 2px #2f2f2f;
+    border-top: 12px solid #e11b2c;
+}
+.hs-form h1, .hs-form h2, .hs-form h3, .hs-form h4, .hs-form h5, .hs-form h6 {
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: bold !important;
+}
+.hs-form li, .scroll-button {
+    font-family: 'Roboto', sans-serif !important;
+}
+.submitted-message {
+    font-family: 'Roboto', sans-serif !important;
+    border: solid 2px #2f2f2f;
+    border-top: 12px solid #e11b2c;
+}
+.hs-form fieldset h1, .hs-form h1, .hs-form .hs-richtext p, .hs-form .hs-richtext.hs-main-font-element > p strong span {
+    font-family: 'Roboto', sans-serif !important;
+}
+.hs-form .legal-consent-container p { font-size: 15px; }
+
+.submitted-message h1, .submitted-message h6 {
+    font-family: 'Roboto', sans-serif !important;
+}
+.hs-form .hs-form-booleancheckbox-display {
+    font-family: 'Roboto', sans-serif !important;
+}
+.hs-form .hs-button.primary.large {
+    background-color: #e11b2c;
+    border: solid 1px #e11b2c;
+}
+.hs-form .hs-button.primary.large:hover {
+    background-color: #b11a27;
+}
+.hs-form label.hs-error-msg.hs-main-font-element, .hs-form label.hs-main-font-element {
+    font-family: 'Roboto', sans-serif !important;
+}
+.hs-form .hs_gen_technologies {
+    margin-top: 3rem !important;
+}
+.hs-form .hs-richtext.hs-main-font-element p {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.hs-form h3.register-now {
+    color: #e11b2c;
+}
+.theme-bg{
+    background-color: #e11b2c !important;
+}

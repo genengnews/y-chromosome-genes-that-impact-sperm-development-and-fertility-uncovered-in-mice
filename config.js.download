@@ -1,0 +1,1182 @@
+var config = {
+  version: "0.1",
+  name: "gen",
+  env: "production",
+  enableSend: true,
+  enableSubmit: true,
+  plugins: {
+    lytics: {
+      stream: "default",
+      account: "bbc76dbf4c90e73a8ee67bacf4468a70"
+    }
+  },
+  captures: [
+    {
+      hostname: /www.genengnews.com/,
+      pathname: /\/register/,
+      target: '[name="signup_submit"]',
+      data: {
+        static: [
+          {
+            path: null,
+            name: "gen-event_type",
+            value: "create_account"
+          },
+        ],
+        form: [
+          {
+            path: '[name="signup_email"]',
+            name: "gen-email",
+            value: ''
+          }
+        ]
+      }
+    },
+    {
+      hostname: /geneng.omeda.com/,
+      pathname: /\/gen\/magazine.do/,
+      target: '[name="submitButton"]',
+      data: {
+        static: [
+          {
+            path: null,
+            name: "gen-event_type",
+            value: "new_subscription"
+          },
+        ],
+        form: [
+          {
+            path: '[name="Products_2_Receive"]',
+            name: 'gen-wish_to_receive_subscription',
+            value: ''
+          },
+          {
+            path: '[name="Emails_GROUP1_EmailAddress"]',
+            name: 'gen-email',
+            value: ''
+          },
+          {
+            path: '[name="FirstName"]',
+            name: 'gen-name_first',
+            value: ''
+          },
+          {
+            path: '[name="LastName"]',
+            name: 'gen-name_last',
+            value: ''
+          },
+          {
+            path: '[name="Title"]',
+            name: 'gen-job_title',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_7"]',
+            name: 'gen-job_function',
+            value: '',
+            valueOrText: 'text'
+          },
+          {
+            path: '[name="Demographic_GEN_8"]',
+            name: 'gen-organization_type',
+            value: '',
+            valueOrText: 'text'
+          },
+          {
+            path: '[name="Addresses_GROUP1_City"]',
+            name: 'gen-address_city',
+            value: ''
+          },
+          {
+            path: '[name="Addresses_GROUP1_RegionCode"]',
+            name: 'gen-address_state',
+            value: ''
+          },
+          {
+            path: '[name="Addresses_GROUP1_PostalCode"]',
+            name: 'gen-address_zip',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_9_134"]',
+            name: 'gen-technology_interests:ADME_Tox_Pharmacokinetics',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_697"]',
+            name: 'gen-technology_interests:Animal_Models',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_109"]',
+            name: 'gen-technology_interests:Antibodies',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_128"]',
+            name: 'gen-technology_interests:Assay_Development',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_138"]',
+            name: 'gen-technology_interests:Biobanking',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_135"]',
+            name: 'gen-technology_interests:Bioinformatics_Big_Data',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_102"]',
+            name: 'gen-technology_interests:Biomarkers',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_111"]',
+            name: 'gen-technology_interests:Bioreactors_Fermentation',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_145"]',
+            name: 'gen-technology_interests:Cancer_Research_Technologies',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_110"]',
+            name: 'gen-technology_interests:Cell_Tissue_Culture',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_104"]',
+            name: 'gen-technology_interests:Cell-Based_Assays',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_132"]',
+            name: 'gen-technology_interests:Cell-Based_Technologies',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_121"]',
+            name: 'gen-technology_interests:Chromatography',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_117"]',
+            name: 'gen-technology_interests:Drug_Delivery',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_127"]',
+            name: 'gen-technology_interests:Drug_Design_Medicinal_Chemistry',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_140"]',
+            name: 'gen-technology_interests:Electrophoresis',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_108"]',
+            name: 'gen-technology_interests:Epigenetics',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_126"]',
+            name: 'gen-technology_interests:Filtration',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_137"]',
+            name: 'gen-technology_interests:Flow_Cytometry',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_124"]',
+            name: 'gen-technology_interests:Gene_Editing_CRISPRs',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_131"]',
+            name: 'gen-technology_interests:Gene_Expression',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_122"]',
+            name: 'gen-technology_interests:High-Content_Screening_Analysis',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_130"]',
+            name: 'gen-technology_interests:Image_Analysis',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_133"]',
+            name: 'gen-technology_interests:Immunology',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_123"]',
+            name: 'gen-technology_interests:Mass_Spectrometry',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_105"]',
+            name: 'gen-technology_interests:Microscopy',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_136"]',
+            name: 'gen-technology_interests:Molecular_Biology_Genomics',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_699"]',
+            name: 'gen-technology_interests:Molecular_Diagnostics',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_119"]',
+            name: 'gen-technology_interests:Next-Gen_Sequencing_Sequencing',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_118"]',
+            name: 'gen-technology_interests:Nucleic_Acid_Isolation_Purification',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_125"]',
+            name: 'gen-technology_interests:PCR',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_120"]',
+            name: 'gen-technology_interests:Peptides',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_698"]',
+            name: 'gen-technology_interests:Phenotypic_Screening',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_114"]',
+            name: 'gen-technology_interests:Process_Monitoring',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_107"]',
+            name: 'gen-technology_interests:Protein_Characterization',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_103"]',
+            name: 'gen-technology_interests:Protein_Expression_Purification',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_116"]',
+            name: 'gen-technology_interests:Proteomics',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_129"]',
+            name: 'gen-technology_interests:RNAi_siRNA',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_113"]',
+            name: 'gen-technology_interests:Stem_Cells_Regenerative_Medicine',
+            value: false
+          },
+          {
+            path: '[name="OEC_Demographic_GEN_9_139"]',
+            name: 'gen-technology_interests:Other',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_9_WriteInDesc"]',
+            name: 'gen-technology_interests:Other:text',
+            value: ''
+          },
+          {
+            path: '[name="Products_3_Receive"]',
+            name: 'gen-newsletter_opt_ins:GEN_Highlights_Daily',
+            value: false
+          },
+          {
+            path: '[name="Products_4_Receive"]',
+            name: 'gen-newsletter_opt_ins:GEN_Highlights_Weekly',
+            value: false
+          },
+          {
+            path: '[name="Products_6_Receive"]',
+            name: 'gen-newsletter_opt_ins:GEN_Tech_Focus',
+            value: false
+          },
+          {
+            path: '[name="Products_401_Receive"]',
+            name: 'gen-newsletter_opt_ins:Bioprocessing_RoundUp_New',
+            value: false
+          },
+          {
+            path: '[name="Products_8_Receive"]',
+            name: 'gen-newsletter_opt_ins:New_Product_Alert',
+            value: false
+          },
+          {
+            path: '[name="multimedia"]',
+            name: 'gen-newsletter_opt_ins:GEN_Multimedia_Alerts',
+            value: false
+          },
+          {
+            path: '[name="Products_130_Receive"]',
+            name: 'gen-newsletter_opt_ins:GEN_Updates',
+            value: false
+          },
+          {
+            path: '[name="thirdParty"]',
+            name: 'gen-newsletter_opt_ins:Key_Information_and_Special_Offers',
+            value: false
+          },
+        ],
+        url: [
+          {
+            path: 'p',
+            name: 'gen-promotion'
+          }
+        ]
+      }
+    },
+    {
+      hostname: /geneng.omeda.com/,
+      pathname: /\/gen\/nlet.do/,
+      target: '[type="submit"]',
+      data: {
+        static: [
+          {
+            path: null,
+            name: "gen-event_type",
+            value: "newsletter_sign_up"
+          },
+        ],
+        url: [
+          {
+            path: 'utm_content',
+            name: 'gen-utm_content'
+          }
+        ],
+        form: [
+          {
+            path: '[name="Emails_GROUP1_EmailAddress"]',
+            name: 'gen-email',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_39"]',
+            name: 'gen-job_function',
+            value: '',
+            valueOrText: 'text'
+          },
+          {
+            path: '[name="Addresses_GROUP1_CountryCode"]',
+            name: 'gen-country',
+            value: '',
+            valueOrText: 'text'
+          },
+          {
+            path: '[name="Products_3_Receive"]',
+            name: 'gen-newsletter_opt_ins:GEN_Highlights_Daily',
+            value: false
+          },
+          {
+            path: '[name="Products_4_Receive"]',
+            name: 'gen-newsletter_opt_ins:GEN_Highlights_Weekly',
+            value: false
+          },
+          {
+            path: '[name="Products_6_Receive"]',
+            name: 'gen-newsletter_opt_ins:GEN_Tech_Focus',
+            value: false
+          },
+          {
+            path: '[name="Products_401_Receive"]',
+            name: 'gen-newsletter_opt_ins:Bioprocessing_RoundUp',
+            value: false
+          },
+          {
+            path: '[name="Products_8_Receive"]',
+            name: 'gen-newsletter_opt_ins:New_Product_Alert',
+            value: false
+          },
+          {
+            path: '[name="multimedia"]',
+            name: 'gen-newsletter_opt_ins:GEN_Multimedia_Alerts',
+            value: false
+          },
+          {
+            path: '[name="Products_130_Receive"]',
+            name: 'gen-newsletter_opt_ins:GEN_Updates',
+            value: false
+          },
+          {
+            path: '[name="thirdParty"]',
+            name: 'gen-newsletter_opt_ins:Key_Information_and_Special_Offers',
+            value: false
+          },
+          {
+            path: '[name="Demographic_GEN_41_274"]',
+            name: 'gen-technology_interests:ADME_Tox_Pharmacokinetics',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_745"]',
+            name: 'gen-technology_interests:Animal_Models',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_249"]',
+            name: 'gen-technology_interests:Antibodies',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_268"]',
+            name: 'gen-technology_interests:Assay_Development',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_278"]',
+            name: 'gen-technology_interests:Biobanking',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_275"]',
+            name: 'gen-technology_interests:Bioinformatics_Big_Data',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_242"]',
+            name: 'gen-technology_interests:Biomarkers',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_251"]',
+            name: 'gen-technology_interests:Bioreactors_Fermentation',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_540"]',
+            name: 'gen-technology_interests:Cancer_Research_Technologies',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_250"]',
+            name: 'gen-technology_interests:Cell_Tissue_Culture',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_244"]',
+            name: 'gen-technology_interests:Cell_Based_Assays',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_272"]',
+            name: 'gen-technology_interests:Cell_Based_Technologies',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_261"]',
+            name: 'gen-technology_interests:Chromatography',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_257"]',
+            name: 'gen-technology_interests:Drug_Delivery',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_267"]',
+            name: 'gen-technology_interests:Drug_Design_Medicinal_Chemistry',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_541"]',
+            name: 'gen-technology_interests:Electrophoresis',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_248"]',
+            name: 'gen-technology_interests:Epigenetics',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_266"]',
+            name: 'gen-technology_interests:Filtration',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_277"]',
+            name: 'gen-technology_interests:Flow_Cytometry',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_264"]',
+            name: 'gen-technology_interests:Gene_Editing_CRISPRs',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_271"]',
+            name: 'gen-technology_interests:Gene_Expression',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_262"]',
+            name: 'gen-technology_interests:High_Content_Screening_Analysis',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_270"]',
+            name: 'gen-technology_interests:Image_Analysis',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_273"]',
+            name: 'gen-technology_interests:Immunology',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_263"]',
+            name: 'gen-technology_interests:Mass_Spectrometry',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_245"]',
+            name: 'gen-technology_interests:Microscopy',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_276"]',
+            name: 'gen-technology_interests:Molecular_Biology_Genomics',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_709"]',
+            name: 'gen-technology_interests:Molecular_Diagnostics',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_259"]',
+            name: 'gen-technology_interests:Next_Gen_Sequencing_Sequencing',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_258"]',
+            name: 'gen-technology_interests:Nucleic_Acid_Isolation_Purification',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_265"]',
+            name: 'gen-technology_interests:PCR',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_260"]',
+            name: 'gen-technology_interests:Peptides',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_746"]',
+            name: 'gen-technology_interests:Phenotypic_Screening',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_254"]',
+            name: 'gen-technology_interests:Process_Monitoring',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_247"]',
+            name: 'gen-technology_interests:Protein_Characterization',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_243"]',
+            name: 'gen-technology_interests:Protein_Expression_Purification',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_256"]',
+            name: 'gen-technology_interests:Proteomics',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_749"]',
+            name: 'gen-technology_interests:Purification',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_269"]',
+            name: 'gen-technology_interests:RNAi_siRNA',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_253"]',
+            name: 'gen-technology_interests:Stem_Cells_Regenerative_Medicine',
+            value: ''
+          },
+          {
+            path: '[name="Demographic_GEN_41_264"]',
+            name: 'gen-technology_interests:Transgenics',
+            value: ''
+          },
+          {
+            path: '[name="OEC_Demographic_GEN_41_279"]',
+            name: 'gen-technology_interests:Other',
+            value: ''
+          },
+          {
+            path: '[name="OEC_WriteInDesc"]',
+            name: 'gen-technology_interests:Other:text',
+            value: ''
+          }
+        ]
+      }
+    },
+    {
+      hostname: /www.genengnews.com/,
+      pathname: /download-the-gen-app-for-ios-and-android/,
+      target: '[class="tds-button3 tdm-btn tdm-btn-lg td_uid_34_5d23703b6c415"]',
+      data: {
+        static: [
+          {
+            name: 'mal-event_type',
+            value: 'android click'
+          }
+        ],
+      }
+    },
+    {
+      hostname: /www.genengnews.com/,
+      pathname: /download-the-gen-app-for-ios-and-android/,
+      target: '[class="tds-button3 tdm-btn tdm-btn-lg td_uid_33_5d23703b6bf55"]',
+      data: {
+        static: [
+          {
+            name: 'mal-event_type',
+            value: 'ios click'
+          }
+        ],
+      }
+    },
+    {
+      hostname: /www\.clinicalomics\.com/,
+      pathname: /^\/register\/$/,
+      target: '[name="signup_submit"]',
+      data: {
+        form: [
+          {
+            name: 'signup_username',
+            path: '[name="signup_username"]'
+          },
+          {
+            name: 'email',
+            path: '[name="signup_email"]'
+          },
+          {
+            name: 'full_name', 
+            path: '[name="field_1"]'
+          },
+          {
+            name: 'omics_magazine',
+            path: '[name="field_15[]"]',
+            default: false,
+            valueLookup: {
+              true: 'yes',
+              false: 'no'
+            }
+          },
+          {
+            name: 'omics_newsletter',
+            path: '[name="field_2[]"]',
+            default: false,
+            valueLookup: {
+              true: 'yes',
+              false: 'no'
+            }
+          },
+          {
+            name: 'omics_privacy',
+            path: '[name="field_6[]"]',
+            default: false,
+            valueLookup: {
+              true: 'yes',
+              false: 'no'
+            }
+          }
+        ]
+      }
+    },
+    {
+      hostname: /geneng\.omeda\.com/,
+      pathname: /^\/gen\/omics.do$/,
+      target: '[type="submit"]',
+      data: {
+        dynamic: [
+          {
+            //field #4 
+            name: 'omics_newsletter',
+            default: false,
+            code: function () {
+              let path = '[id="box_Products_216_Receive"]';
+              let e = document.querySelector(path);
+              if (e.checked) {
+                return true;
+              }
+              return false;
+            }
+          },
+          {
+            //field #5...has the same path as field 4
+            name: 'omics_focus',
+            code: function () {
+              let path = '[id="box_Products_283_Receive"]';
+              let e = document.querySelector(path);
+              if (e.checked) {
+                return true;
+              }
+              return false;
+            }
+          },
+        ],
+        form: [
+          {
+            // field #1, #2, #3
+            name: 'omics_magazine',
+            path: '[name="Products_11_RequestedVersion"]',
+            default: '',
+            valueLookup: {
+              'D': 'digital',
+              'P': 'print',
+              '': 'none'
+            }
+          },
+          {
+            // field #6
+            name: 'omics_job_function',
+            path: '[name="Demographic_GEN_77"]',
+            valueLookup: {
+              '345': 'Lab Director/Manager/Administrator',
+              '640': 'Molecular Pathologist',
+              '955': 'Clinical Researcher/Research Scientist/R&D',
+              '348': 'Oncologist/Clinician',
+              '653':	'Clinician/Physician',
+              '954':	'Diagnostics Developer',
+              '645':	'Informatician',
+              '1116':	'Geneticist/Genetic Counselor',
+              '751':	'Translational Researcher',
+              '677':	'Executive/Senior Management',
+              '957': 'Academic Head/Dean',
+              '675':	'Professor/Instructor/Post Doc',
+              '361':	'Hospital Administrator',
+              '1069':	'Business Development',
+              '956':	'Reimbursement/Pricing',
+              '344':	'Other'
+            }          
+          },
+          {
+            //field #7
+            name: 'omics_organization_type',
+            path: '[name="Demographic_GEN_78"]',
+            valueLookup: {
+            '351':	'Hospital/Medical Center',
+            '637':	'Pharmaceutical/Biopharm/Biotech Company',
+            '355':	'Academic/University/Government',
+            '996':	'Clinical Lab',
+            '634':	'Diagnostic Manufacturer',
+            '636':	'Government',
+            '960':	'Contract Research Organization (CRO)',
+            '961':	'Association/Society/Non-Profit',
+            '995':	'Software/Hardware Provider',
+            '958':	'Insurance Company',
+            '345':	'Other'
+            }
+          },
+          {
+            //field #8
+            name: 'omics_interest',
+            path: '[name="Demographic_GEN_137_MULTI_RESPONSE"]',
+            defaultValue: [],
+            valueLookup: {
+              '971':	'Bioinformatics/Big Data',
+              '969':	'Biomarkers',
+              '999':	'Cancer',
+              '1002':	'Cardiology',
+              '1087':	'Clinical Decision Support',
+              '977':	'Epigenetics',
+              '976':	'Gene Editing/CRISPR',
+              '998':	'Immunology/Autoimmune Diseases',
+              '1086':	'Immunotherapy',
+              '1003':	'Infectious Diseases',
+              '1075':	'Inherited/Rare Diseases',
+              '1074':	'Liquid Biopsy',
+              '968':	'Mass Spectrometry/LCMS',
+              '974':	'Molecular Biology/Genomics',
+              '964':	'Molecular Diagnostics',
+              '1085':	'Molecular Pathology',
+              '1000':	'Neo-Natal/Pre-Natal Screening',
+              '1001':	'Neurology',
+              '963':	'Next-Gen Sequencing/Sequencing',
+              '962':	'PCR',
+              '972':	'Proteomics',
+              '965':	'Other (please specify)',
+              '967':	'None of the Above'
+            }
+          },
+          {
+            name: 'omics_interest_other',
+            path: '[name="Demographic_GEN_137_WriteInDesc"]',
+            value: ''
+          },
+          {
+            //field #9
+            name: 'omics_email',
+            path: '[name="Emails_GROUP1_EmailAddress"]'
+          },
+          {
+            //field #10
+            name: 'omics_name_first',
+            path: '[name="FirstName"]'
+          },
+          {
+            //field #11
+            name: 'omics_name_last',
+            path: '[name="LastName"]'
+          },
+          {
+            //field #12 
+            //"company" is now "Company"
+            name: 'omics_company',
+            path: '[name="Addresses_GROUP1_Company"]'
+          },
+          {
+            //field #13
+            //"title" is now "Title"
+            name: 'omics_job_title',
+            path: '[name="Title"]'
+          },
+          {
+            //field #14
+            //"street" is now "Street"
+            name: 'omics_address',
+            path: '[name="Addresses_GROUP1_Street"]'
+          },
+          {
+            //field #15
+            name: 'omics_address_2',
+            path: '[name="Addresses_GROUP1_ApartmentMailStop"]'
+          },
+          {
+            //field #16
+            //"city" is now "City"
+            name: 'omics_address_city',
+            path: '[name="Addresses_GROUP1_City"]'
+          },
+          {
+            //field #17
+            //value??
+            name: 'omics_address_state',
+            path: '[name="Addresses_GROUP1_RegionCode"]'
+          },
+          {
+            //field #18
+            //"postalcode" is now "PostalCode"
+            name: 'omics_address_zip',
+            path: '[name="Addresses_GROUP1_PostalCode"]'
+          },
+          {
+            //field #19
+            //value??
+            name: 'omics_country',
+            path: '[name="Addresses_GROUP1_CountryCode"]'
+          },
+          {
+            //field #20
+            name: 'omics_phone_number',
+            path: '[name="Phones_200_Number"]'
+          }
+        ]
+      }
+    },
+    {
+      hostname: /www.genengnews.com/,
+      pathname: /create-your-gen-account/,
+      //splitArrayElementsIntoSeparateEvents: true,
+      target: '[name="rcp_submit_registration"]',
+      data: {
+        dynamic: [
+          {
+            "name": "gen-membership_price",
+            "code": () => {
+              let path = '[data-th="Amount"]';
+              let e = document.querySelector(path);
+              let price = e.textContent.replace(/^\$/, '');
+              return price;
+            }
+          },
+        ],
+        form: [
+          {
+            name: 'username',
+            path: '[name="rcp_user_login"]'
+          },  
+          {
+            name: 'gen-email',
+            path: '[id="rcp_user_email"]'
+          },
+          {
+            name: 'gen-name_first',
+            path: '[name="rcp_user_first"]'
+          },
+          {
+            name: 'gen-name_last',
+            path: '[name="rcp_user_last"]'
+          },
+          {
+            name: 'gen-job_function',
+            path: '[id="job-function"]',
+            valueLookup: {
+            'R&D Research/Staff Scientist':	'R&D Research/Staff Scientist',
+            'Lab Management':	'Lab Management',
+            'Production/Process Scientist/Manufacturing':	'Production/Process Scientist/Manufacturing',
+            'Clinical Researcher (MD/PhD, Clinical Affairs)':	'Clinical Researcher (MD/PhD, Clinical Affairs)',
+            'Core Facility Manager':	'Core Facility Manager',
+            'Pharmaceutical Engineer':	'Pharmaceutical Engineer',
+            'Validation/Regulatory/QA/QC':	'Validation/Regulatory/QA/QC',
+            'Technology Transfer Manager':	'Technology Transfer Manager',
+            'Executive & Corporate Management':	'Executive & Corporate Management',
+            'Business Development Professional':	'Business Development Professional',
+            'Purchasing Manager/Agent':	'Purchasing Manager/Agent',
+            'Graduate Student': 'Graduate Student',
+            'Other': 'Other'
+            }
+          },
+          {
+            name: 'gen-organization_type',
+            path: '[name="organization-type"]',
+            valueLookup: {
+            'Biotechnology Co.': 'Biotechnology Co.',
+            'Pharmaceutical/Biopharm Co.': 'Pharmaceutical/Biopharm Co.',
+            'University/Academic Institution': 'University/Academic Institution',
+            'Government': 'Government',
+            'Private Research Institution': 'Private Research Institution',
+            'Clinical Research/Hospital/Medical School': 'Clinical Research/Hospital/Medical School',
+            'Diagnostics Co.': 'Diagnostics Co.',
+            'Contract Manufacturing Organization': 'Contract Manufacturing Organization',
+            'Contract Research Organization': 'Contract Research Organization',
+            'Financial/Venture Capital/Law Firm': 'Financial/Venture Capital/Law Firm',
+            'Other': 'Other'
+            }
+          },
+          {
+            name: 'digital_magazine_subscription',
+            path: '[name="subscribe-to-digital-edition-of-gen-magazine[]"]',
+            default: false,
+            valueLookup: {
+              true: 'yes',
+              false: 'no'
+            }
+          },
+          {
+            name: 'gen-newsletter_opt_ins:GEN_Highlights_Daily',
+            path: '[name="subscribe-to-gen-daily-enewsletter[]"]',
+            default: false,
+            valueLookup: {
+              true: 'yes',
+              false: 'no'
+            }
+          },
+          {
+            name: 'gen-event_type',
+            path: '[name="rcp_level"]',
+            default: 1,
+            valueLookup: {
+              1: 'create_account',
+              2: 'membership_edge_monthly',
+              3: 'membership_edge_annual',
+              4: 'membership_edge_group',
+            }
+          },
+        ]
+      }
+    },
+    {
+      hostname: /home.liebertpub.com/,
+      pathname: /\/publications\/.+?\/\d+\/email-to-friend/,
+      target: '[id="btnSubmit"]',
+      data: {
+        static: [
+          {
+            path: null,
+            name: 'mal-event_type',
+            value: 'share_with_a_colleague'
+          }
+        ],
+        dynamic: [
+          {
+            name: 'mal-journal_code',
+            code: () => {
+              return journal_code;
+            }
+          },
+        ],
+        form: [
+          {
+            path: '[name="PubTitle"]',
+            name: 'mal-book_name',
+            default: ''
+          },
+          {
+            path: '[name="SenderEmail"]',
+            name: 'mal-email',
+            default: ''
+          },
+          {
+            path: '[name="SenderPosition"]',
+            name: 'mal-position',
+            value: ''
+          },
+          {
+            path: '[name="SenderDepartment"]',
+            name: 'mal-department',
+            default: ''
+          },
+        ]
+      }
+    },
+    {
+      hostname: /home.liebertpub.com/,
+      pathname: /\/publications\/.+?\/\d+\/signup/,
+      target: '[class="btn btn-lg btn-outline-primary dark-text"]',
+      data: {
+        static: [
+          {
+            path: null,
+            name: 'mal-event_type',
+            value: 'signup'
+          }
+        ],
+        dynamic: [
+          {
+            name: 'mal-journal_code',
+            code: () => {
+              return journal_code;
+            }
+          },
+        ],
+        form: [
+          {
+            path: '[name="PubTitle"]',
+            name: 'mal-book_name',
+            default: ''
+          },
+          {
+            path: '[name="Email"]',
+            name: 'mal-email',
+            value: ''
+          },
+          {
+            path: '[name="SubscriptionList"]',
+            name: 'mal-communication_types',
+            default: [],
+            valueLookup: {
+              "111": "Press Releases",
+              "112": "Calls for Papers",
+              "113": "Featured Papers",
+              "109": "Announcements",
+              "95": "TOC Alerts"
+            }
+          },
+          {
+            path: '[name="FirstName"]',
+            name: 'mal-first_name',
+            default: '',
+          },
+          {
+            path: '[name="LastName"]',
+            name: 'mal-last_name',
+            default: '',
+          },
+          {
+            path: '[name="Country"]',
+            name: 'mal-country',
+            default: ''
+          },
+        ]
+      }
+    },
+    {
+      hostname: /home.liebertpub.com/,
+      pathname: /\/publications\/.+?\/\d+\/recommend/,
+      target: '[id="submitButton"]',
+      data: {
+        static: [
+          {
+            name: 'mal-event_type',
+            value: 'recommend'
+          }
+        ],
+        dynamic: [
+          {
+            name: 'mal-journal_code',
+            code: () => {
+              return journal_code;
+            }
+          },
+        ],
+        form: [
+          {
+            path: 'strong',
+            name: 'mal-book_name'
+          },
+          {
+            path: '[name="FirstName"]',
+            name: 'mal-first_name'
+          },
+          {
+            path: '[name="LastName"]',
+            name: 'mal-last_name'
+          },
+          {
+            path: '[name="Email"]',
+            name: 'mal-email'
+          },
+          {
+            path: '[name="Institution"]',
+            name: 'mal-institution'
+          },
+          {
+            path: '[name="Position"]',
+            name: 'mal-position'
+          },
+          {
+            path: '[name="Department"]',
+            name: 'mal-department'
+          },
+          {
+            path: '[name="reasons"]',
+            name: 'mal-recommended_reasons',
+            valueLookup: {
+              '00N3900000452TB': 'I am a member of the Editorial Board and/or a contributor to the journal.',
+              '00N3900000452TG': 'This publication is a vital resource for my research activity and/or clinical work.',
+              '00N3900000452TL': 'This journal publishes high-quality content that will add to the value of our library and fulfill department and faculty needs.',
+              '00N3900000452TQ': 'I will refer my students to this journal to assist in their studies.',
+            }
+          }
+        ]
+      }
+    }
+  ]
+};

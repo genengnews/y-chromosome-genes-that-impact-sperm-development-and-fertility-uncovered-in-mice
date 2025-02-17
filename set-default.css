@@ -1,0 +1,4 @@
+/* Sets default HTML font size, as plugins kept interfering and resetting it, making things set to REM inconsistent */
+html {
+    font-size: 10px;
+}

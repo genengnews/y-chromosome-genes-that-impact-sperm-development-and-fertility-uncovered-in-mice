@@ -1,0 +1,33 @@
+function webinarCallback($form){
+    console.log($form);
+
+    jQuery(function($) {
+        import("../../../includes/blocks/blockResources/assets/js/DateFormatter.js")
+            .then(({ DateFormatter, DateFormatHandler }) => {
+                const $webinar = $('#hubspotWebinar');
+                const parser = new DOMParser();
+                const decodedString = parser.parseFromString(webinarDates, 'text/html').documentElement.textContent;
+                const dateArray = JSON.parse(decodedString);
+                const handler = new DateFormatHandler();
+                handler.package(dateArray);
+                const html = handler.render(postTitle);
+                // Create a new fieldset and append the html content
+                const $newFieldset = $('<fieldset class="form-columns-1"></fieldset>').append(html);
+
+                // Select all fieldset elements within the form
+                const fieldsets = $form.find('fieldset');
+
+                if (fieldsets.length > 1) {
+                    console.log(fieldsets);
+
+                    fieldsets[0].insertAdjacentElement('beforebegin', $newFieldset.get(0));
+                }
+            })
+            .catch((error) => {
+                console.error("Error loading DateFormatter:", error);
+            });
+    })
+}
+
+
+

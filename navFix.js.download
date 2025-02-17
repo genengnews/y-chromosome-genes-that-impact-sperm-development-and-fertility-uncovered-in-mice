@@ -1,0 +1,115 @@
+// This code fixes the nav scrolling issues, by over writing tag divs styles. It assigns classes which are defined in genengnews/assets/css/ui-ux-fixes.css
+
+//Wait until Dom is ready before loading content
+let adObserver;
+
+//Breakpoints
+let scrollBreakpoint = 0;
+let navBar;
+let navBarBg;
+let adminBar;
+
+jQuery(function ($){
+
+    window.googletag = window.googletag || {};
+    googletag.cmd = googletag.cmd || [];
+
+    googletag.cmd.push(() => {
+        googletag.pubads().addEventListener('slotOnload', event => {
+            console.log('Ad Loaded:', event.slot.getSlotElementId());
+            adChanged(); // Fire your callback when an ad loads
+        });
+    });
+
+
+    window.addEventListener('load', (event) => {
+        this.adObserver = new ResizeObserver(entries => {
+            entries.forEach(entry => {
+                setNavBreakpoints();
+            });
+        });
+        addEventListener('scroll', debounce( () => { scrollCheck() }, 100 ));
+    });
+
+    function scrollCheck() {
+        let vBreakPoint = this.scrollBreakPoint;
+        let nav = this.navBar;
+        let navBg = this.navBarBg;
+        if (nav && navBg) {
+            if (window.scrollY > vBreakPoint) {
+                nav.classList.add('fixed-nav');
+                navBg.classList.add('nav-bg');
+                nav.classList.remove('static-nav');
+                nav.classList.remove('td-affix');
+                //If in admin add height to the offset
+                if ( this.adminBar ) {
+                    nav.style.top = this.adminBar.getBoundingClientRect().height + 'px';
+                }
+            } else {
+                nav.classList.remove('fixed-nav');
+                navBg.classList.remove('nav-bg');
+                nav.classList.add('static-nav');
+                nav.classList.remove('td-affix');
+                //If in admin add height to the offset
+                if ( this.adminBar ) {
+                    nav.style.top = '0px';
+                }
+            }
+        }
+    }
+
+    function setNavBreakpoints() {
+        this.adminBar = checkElExists(document.querySelector('#wpadminbar')) ? document.querySelector('#wpadminbar') : null;
+        this.navBarBg = checkElExists(document.querySelector('.td-header-style-10 .td-header-menu-wrap-full.td-container-wrap')) ? document.querySelector('.td-header-style-10 .td-header-menu-wrap-full.td-container-wrap') : null;
+        this.navBar = checkElExists(document.querySelector('.td-header-menu-wrap.td-header-gradient')) ? document.querySelector('.td-header-menu-wrap.td-header-gradient') : null;
+        if (this.navBar) {
+            setTimeout(()=>{this.scrollBreakPoint = this.navBarBg.offsetTop}, 500);
+        }
+    }
+
+    function adChanged() {
+        let upArrow = checkElExists(document.querySelector('#to_top_scrollup')) ? document.querySelector('#to_top_scrollup') : null;
+        let adHeight = checkElExists(document.querySelector('#per-footer-ad')) ? document.querySelector('#per-footer-ad').offsetHeight : null;
+        const footerBottom = document.getElementsByClassName('sage-footer')[0];
+        if (adHeight) {
+            // Change footer padding bottom to match height of footer ad
+            if (footerBottom) {
+                footerBottom.style.marginBottom = adHeight + 'px';
+            }
+            // Change uparrow to be above footer
+            if (upArrow) {
+                upArrow.style.bottom = '0px';
+                upArrow.style.marginBottom = adHeight + 'px';
+            }
+        } else {
+            // Change footer padding bottom to reset to default
+            if (footerBottom) {
+                footerBottom.style.paddingBottom = '0px';
+            }
+            // Change uparrow to default settings
+            if (upArrow) {
+                upArrow.style.bottom = '60px';
+                upArrow.style.marginBottom = '0px';
+            }
+        }
+    }
+
+//This is to avoid attempting to get elements at times when the DOM is changing ( ads loading and such ) and throwing errors in the log
+    function checkElExists(element) {
+        if (element != null) {
+            return element;
+        }
+        return 0;
+    }
+
+//Debounce function to avoid spamming calls to functions on scroll event
+    function debounce(func, timeout = 300){
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => { func.apply(this, args); }, timeout);
+        };
+    }
+    adChanged();
+})
+

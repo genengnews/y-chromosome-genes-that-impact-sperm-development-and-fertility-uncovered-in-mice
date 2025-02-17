@@ -1,0 +1,98 @@
+const gatedFormReady = () => {
+    jQuery(function ($) {
+        const $richTexts = $('#gatedModal .hs-richtext');
+        $($richTexts[0]).addClass('mt-8');
+        $($richTexts[$richTexts.length - 1]).addClass('mb-8');
+    })
+}
+
+const gatedFormSubmitCallback = () => {
+    const gatedButton = document.querySelector('#gatedButton');
+    const gatedContent = document.querySelector('.gated-widget-body');
+    if (gatedContent) {
+        gatedContent.remove();
+    }
+    if (gatedButton) {
+        gatedButton.remove();
+    }
+    // Change the text of the gated-title
+    const titleElement = document.querySelector('.gated-title');
+    if (titleElement) {
+        titleElement.textContent = `Thank You for your interest in ${gatedCompany} content.`;
+    }
+    // Change the text of the gated-message
+    const messageElement = document.querySelector('.gated-message');
+    if (messageElement) {
+        messageElement.textContent = 'Click the button to start the download.';
+    }
+
+    function scrollToGatedButtonDownload() {
+        setTimeout(() => {
+            const targetElement = document.querySelector('#gatedButtonDownload');
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth', // Enables smooth scrolling
+                    block: 'center',     // Aligns the element to the top of the viewport
+                });
+            } else {
+                console.warn('Element with ID "gatedButtonDownload" not found.');
+            }
+        }, 150);
+    }
+
+    setTimeout(() => {
+        scrollToGatedButtonDownload();
+    }, 150);
+}
+
+
+try {
+    hbspt.forms.create({
+        region: "na1",
+        portalId: hubspotPortalId,
+        formId: hubspotMagazineId,
+        target: "#hubspotMagazine"
+    });
+} catch (e) {
+    console.warn(e);
+}
+try {
+    hbspt.forms.create({
+        region: "na1",
+        portalId: hubspotPortalId,
+        formId: hubspotNewsletterId,
+        target: "#hubspotNewsletter"
+    });
+} catch (e) {
+    console.warn(e);
+}
+try{
+        hbspt.forms.create({
+            region: "na1",
+            portalId: hubspotPortalId,
+            formId: hubspotPostFormId,
+            target: "#hubspotWebinar",
+            onFormReady: function($form) {
+                webinarCallback($form);
+            }
+        });
+} catch (e) {
+    console.warn(e);
+}
+try {
+        hbspt.forms.create({
+            region: "na1",
+            portalId: hubspotPortalId,
+            formId: hubspotGatedFormId,
+            target: '#gatedAssetContent',
+            inlineMessage: formsDownloadLink,
+            onFormSubmitted: () => gatedFormSubmitCallback(),
+            onFormReady: () => gatedFormReady(),
+        });
+} catch (e) {
+    console.warn(e);
+}
+
+
+
+console.log(hubspotGatedFormId);

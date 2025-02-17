@@ -1,0 +1,104 @@
+console.log('called');
+jQuery(document).ready(function($) {
+    $('#submit-straive-form').on('click', function(event){
+        event.preventDefault();
+        getFormData();
+    });
+    $('.straive-tag').on('click', '.remove-tag', function(event) {
+        event.preventDefault();
+        removeHandler($(this));
+    });
+    const taggers = $('.select-straive-tag');
+    const $tag = $('#tag');
+    const activeStyle='background: white; margin-top: 5px; margin-right: 5px;display:inline-block; padding: 10px; height: auto;width: auto;border: 1px solid black;';
+    $('.submit-term').on('click', function(event) {
+        event.preventDefault();
+        addTag($(this));
+    });
+    taggers.each( function() {
+        const name = $(this).data('singular');
+        const $slug = $(this).data('slug');
+        $(this).select2({
+            placeholder: "Select a " + name
+        });
+        const $tagsDiv = $(`div#${$slug}-tags`);
+
+        $(this).on('change', function( event ){
+            let val = event.target.value;
+            let name = $(event.target).find('option:selected').data('name');
+            newTag( $tagsDiv, name, val );
+            event.target.value = '';
+        });
+    });
+    function newTag( $tagsDiv, name, slug ){
+        let $newTag = $tag.clone();
+        const $container = $newTag.find('#straive-tag-container');
+        $newTag.attr('style', activeStyle);
+        $newTag.attr('data-slug', slug);
+        $container.html(name);
+        $tagsDiv.append($newTag);
+        $newTag.on('click', '.remove-tag', function(event) {
+            event.preventDefault();
+            removeHandler($(this));
+        });
+    };
+    function removeHandler($clickedButton){
+        $clickedButton.closest('.straive-tag').remove();
+    }
+    function getFormData() {
+        const id = $('#straive-form').data('id');
+        let data = {};
+        const tags = ($('.term-container > .tags'));
+        tags.each(function( index, tag ){
+            const parent_slug = $(tag).data('slug');
+            data[parent_slug] = [];
+            const children = $(tag).children();
+            children.each(function( index, child ){
+                data[parent_slug].push($(child).data('slug'));
+            });
+        });
+        data['ID'] = id;
+        data['show'] = $("#show_in_straive_dashboard").prop('checked');
+        $.ajax({
+            url: ajax.url,
+            type: 'POST',
+            data: {
+                'action' : 'update_post',
+                'payload': JSON.stringify(data),
+            },
+            success: function(response) {
+                console.log(response);
+                location.reload();
+            },
+            error: function(error){
+                console.log(error);
+                location.reload();
+            }
+        })
+    }
+    function addTag($clickedButton) {
+        const slug = $clickedButton.data('slug');
+        const $input = $('#' + slug + '-tax-add');
+        $.ajax({
+            url: ajax.url,
+            type: 'POST',
+            data: {
+                'action' : 'add_tag',
+                'slug' : slug,
+                'value': $input.val(),
+            },
+            success: function(response) {
+                const val = JSON.parse(response.term).value;
+                const slug = (JSON.parse(response.term).slug);
+                const termSlug = JSON.parse(response.term).termSlug;
+                const $tagsDiv = $(`div#${slug}-tags`);
+                const $inputDiv = $(`#${slug}-tax-add`);
+                $inputDiv.val('');
+                newTag( $tagsDiv, val, termSlug );
+            },
+            error: function(error){
+                console.log(error);
+            }
+        })
+    }
+});
